@@ -137,3 +137,24 @@ function finalise () public view returns (uint) {
 }
 
 }
+
+
+//Practice contract with a basic minting process e.g.
+//Takes user input on amount they want to mint, takes cost of 10 from wallet, adds amount to nftWallet and takes amount from total left
+contract myPractice{
+
+    uint public nftWallet = 0;
+    uint public wallet = 100;
+    uint public mintCount = 12;
+    uint cost = 20;
+
+    function mintIt (uint mintAmount) public {
+
+        require (wallet >= cost && mintCount >= 1, "Failed to mint!");
+
+        wallet = wallet - (mintAmount * cost);
+        nftWallet = nftWallet + mintAmount;
+        mintCount = mintCount - mintAmount;
+
+    }
+}
